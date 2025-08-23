@@ -7,6 +7,7 @@ import {
   SignedIn,
   SignedOut,
   UserButton,
+  SignOutButton
 } from '@clerk/nextjs'
 import { Button } from "@/components/ui/button"
 
@@ -19,10 +20,12 @@ export default function Header() {
         </Typography>
         <div className="flex items-center gap-4">
           <SignedOut>
-            <SignInButton afterSignInUrl="/movies">
-              <button className="text-white font-medium hover:text-[#e50914] transition-colors">Sign In</button>
+            <SignInButton forceRedirectUrl="/movies">
+              <Button variant={"secondary"}>
+                Sign In
+              </Button>
             </SignInButton>
-            <SignUpButton>
+            <SignUpButton forceRedirectUrl="/movies">
               <Button variant={"secondary"}>
                 Sign Up
               </Button>
@@ -30,6 +33,11 @@ export default function Header() {
           </SignedOut>
           <SignedIn>
             <UserButton />
+            <SignOutButton redirectUrl="/">
+              <Button variant={"secondary"}>
+                Sign Out
+              </Button>
+            </SignOutButton>
           </SignedIn>
         </div>
       </Toolbar>
