@@ -18,6 +18,14 @@ export default function Header() {
         <Typography variant="h5" className="text-white font-bold tracking-wide">
           FavFlix
         </Typography>
+       <nav>
+        <Button variant="link">Link</Button>
+        <Button variant="link">Link</Button>
+        <Button variant="link">Link</Button>
+        <Button variant="link">Link</Button>
+        <Button variant="link">Link</Button>
+        <Button variant="link">Link</Button>
+       </nav>
         <div className="flex items-center gap-4">
           <SignedOut>
             <SignInButton forceRedirectUrl="/movies">

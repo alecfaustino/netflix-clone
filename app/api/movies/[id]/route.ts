@@ -1,12 +1,10 @@
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const query = searchParams.get("query") || "inception";
+export async function GET(request: Request, {params}: {params: {id: string}}) {
+  const id = params.id;
 
   const res = await fetch(
-    `
-https://api.themoviedb.org/3/discover/movie`,
+    `https://api.themoviedb.org/3/movie/${id}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
