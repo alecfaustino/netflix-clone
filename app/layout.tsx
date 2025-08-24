@@ -40,7 +40,7 @@ export default function RootLayout({
           <Header />
           {children}
 
-          <footer className="bg-gray-100 text-center py-4 text-sm text-gray-600">
+          <footer className="fixed bottom-0 left-0 w-full bg-gray-100 text-center py-4 text-sm text-gray-600">
           This product uses the TMDB API but is not endorsed or certified by TMDB.
         </footer>
 
