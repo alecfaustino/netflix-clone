@@ -12,6 +12,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from '@/components/header';
 import Container from '@mui/material/Container';
+import ThemeRegistry from './ThemeRegistry';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,16 +35,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-     <ClerkProvider>
+    <ClerkProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <Header />
-          {children}
-
-          <footer className="fixed bottom-0 left-0 w-full bg-gray-100 text-center py-4 text-sm text-gray-600">
-          This product uses the TMDB API but is not endorsed or certified by TMDB.
-        </footer>
-
+          <ThemeRegistry>
+            <Header />
+            {children}
+            <footer className="fixed bottom-0 left-0 w-full bg-gray-100 text-center py-4 text-sm text-gray-600">
+              This product uses the TMDB API but is not endorsed or certified by TMDB.
+            </footer>
+          </ThemeRegistry>
         </body>
       </html>
     </ClerkProvider>

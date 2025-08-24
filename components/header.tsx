@@ -9,22 +9,26 @@ import {
   UserButton,
   SignOutButton
 } from '@clerk/nextjs'
-import { Button } from "@/components/ui/button"
 
-export default function Header() {
+import { Button } from "@/components/ui/button"
+import GenresDropdown from "./GenresDropdown";
+
+
+export default async function Header() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/genres`);
+  const genres = await res.json();
+
   return (
     <AppBar position="sticky" className="bg-[#141414] shadow-lg">
       <Toolbar className="flex justify-between px-8 min-h-[64px]">
         <Typography variant="h5" className="text-white font-bold tracking-wide">
           FavFlix
         </Typography>
-       <nav>
-        <Button variant="link">Link</Button>
-        <Button variant="link">Link</Button>
-        <Button variant="link">Link</Button>
-        <Button variant="link">Link</Button>
-        <Button variant="link">Link</Button>
-        <Button variant="link">Link</Button>
+       <nav className="flex gap-2 items-center">
+         <GenresDropdown genres={genres.genres || []} />
+         <Button variant="link">Home</Button>
+         <Button variant="link">Movies</Button>
+         <Button variant="link">TV Shows</Button>
        </nav>
         <div className="flex items-center gap-4">
           <SignedOut>

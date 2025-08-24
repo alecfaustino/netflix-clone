@@ -23,6 +23,14 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
 
   return (
     <Container maxWidth="md" className="my-8">
+      <div className="mb-4">
+        <Link href="/movies" className="inline-flex items-center hover:underline font-medium">
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          See all movies
+        </Link>
+      </div>
       <div className="flex flex-col md:flex-row bg-[#181818] rounded-lg shadow-lg overflow-hidden">
         <div className="flex-shrink-0 flex justify-center items-center p-4">
           <Image
@@ -64,12 +72,12 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
   <h2 className="text-2xl font-bold mb-4">Similar Movies</h2>
   <div className="flex overflow-x-auto gap-4 pb-2 md:grid md:grid-cols-5 md:gap-6 md:overflow-x-visible">
     {similarMovies.results.map((movie: any) => (
-      <Link href={`/movies/${movie.id}`} key={movie.id} className="min-w-[160px] max-w-[180px] flex-shrink-0">
+      <Link href={`/movies/${movie?.id}`} key={movie?.id} className="min-w-[160px] max-w-[180px] flex-shrink-0">
         <Card className="bg-[#232323] hover:scale-105 hover:shadow-xl transition-transform duration-200">
           <CardMedia
             component="img"
-            image={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-            alt={movie.title}
+            image={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`}
+            alt={movie?.title}
             className="rounded-t"
             style={{ height: 240, objectFit: "cover" }}
           />
