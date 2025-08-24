@@ -20,9 +20,9 @@ export default function GenresDropdown({ genres }: { genres: { id: number; name:
       <PopoverContent
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
-        className="w-48"
+        className="w-auto max-w-screen-md"
       >
-        <ul>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
           {genres.map((genre) => (
             <li key={genre.id} className="py-1 px-2 hover:bg-gray-100 cursor-pointer rounded">
               {genre.name}
