@@ -14,5 +14,6 @@ https://api.themoviedb.org/3/search/movie?query=${query}
       },
     }
   );
-  return NextResponse.json({ message: `Searched for: ${query}` });
+  const data = await res.json();
+  return NextResponse.json(data);
 }

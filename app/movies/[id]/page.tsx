@@ -71,7 +71,7 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
      <div className="mt-10">
   <h2 className="text-2xl font-bold mb-4">Similar Movies</h2>
   <div className="flex overflow-x-auto gap-4 pb-2 md:grid md:grid-cols-5 md:gap-6 md:overflow-x-visible">
-    {similarMovies.results.map((movie: any) => (
+    {similarMovies.results.map((movie: { id: number; title: string; poster_path: string }) => (
       <Link href={`/movies/${movie?.id}`} key={movie?.id} className="min-w-[160px] max-w-[180px] flex-shrink-0">
         <Card className="bg-[#232323] hover:scale-105 hover:shadow-xl transition-transform duration-200">
           <CardMedia

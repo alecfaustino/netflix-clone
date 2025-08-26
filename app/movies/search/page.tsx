@@ -1,11 +1,15 @@
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import Link from 'next/link';
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Link from "next/link";
 
-export default async function MovieSearchedPage({ searchParams }: { searchParams: { searchTerm: string | undefined } }) {
+export default async function MovieSearchedPage({
+  searchParams,
+}: {
+  searchParams: { searchTerm: string | undefined };
+}) {
   const params = await searchParams;
 
   const searchTerm = params.searchTerm;
@@ -25,36 +29,41 @@ https://api.themoviedb.org/3/search/movie?query=${searchTerm}
   const movies = data.results;
 
   if (movies.length === 0) {
-    return <Typography variant="h4" className='text-center align-middle'>No results found for: {searchParams.searchTerm}</Typography>;
+    return (
+      <Typography variant="h4" className="text-center align-middle">
+        No results found for: {searchParams.searchTerm}
+      </Typography>
+    );
   }
 
   return (
     <main>
-      <Typography variant="h4" className='text-center'>Search Results for: {searchTerm}</Typography>
+      <Typography variant="h4" className="text-center">
+        Search Results for: {searchTerm}
+      </Typography>
       <Grid container spacing={2}>
-        {movies.map((movie: any) => (
-          <Grid
-            size={{xs: 6, sm: 4, md: 3, lg: 2}}
-            key={movie.id}
-          >
-          <Link href={`/movies/${movie.id}`}>
-            <Card className='hover:scale-105 transition-transform'>
-              {/* TODO HANDLE EMPTY IMAGES */}
-              {movie.poster_path && (
-                <CardMedia
-                  component="img"
-                  image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                />
-              )}
-              <CardContent className="text-center h-24">
-                <Typography variant="subtitle1">{movie.title}</Typography>
-              </CardContent>
-            </Card>
-          </Link>
-        </Grid>
-      ))}
-    </Grid>
+        {movies.map(
+          (movie: { id: number; title: string; poster_path: string }) => (
+            <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={movie.id}>
+              <Link href={`/movies/${movie.id}`}>
+                <Card className="hover:scale-105 transition-transform">
+                  {/* TODO HANDLE EMPTY IMAGES */}
+                  {movie.poster_path && (
+                    <CardMedia
+                      component="img"
+                      image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      alt={movie.title}
+                    />
+                  )}
+                  <CardContent className="text-center h-24">
+                    <Typography variant="subtitle1">{movie.title}</Typography>
+                  </CardContent>
+                </Card>
+              </Link>
+            </Grid>
+          )
+        )}
+      </Grid>
     </main>
   );
 }

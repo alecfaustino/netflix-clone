@@ -1,14 +1,14 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import {
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  SignOutButton
-} from '@clerk/nextjs'
+// import {
+//   SignInButton,
+//   SignUpButton,
+//   SignedIn,
+//   SignedOut,
+//   UserButton,
+//   SignOutButton
+// } from '@clerk/nextjs'
 
 import { Button } from "@/components/ui/button"
 import GenresDropdown from "./GenresDropdown";
