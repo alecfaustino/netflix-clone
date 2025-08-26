@@ -2,9 +2,18 @@
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function GenresDropdown({ genres }: { genres: { id: number; name: string }[] }) {
   const [open, setOpen] = useState(false);
+  const [genreId, setGenreId] = useState<number | null>(null);
+  const router = useRouter();
+
+  const onGenreSelect = (id: number) => {
+    setGenreId(id);
+    // navigate to movies/genre page
+    router.push(`/movies/genre?genre_id=${id}`);
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -24,7 +33,7 @@ export default function GenresDropdown({ genres }: { genres: { id: number; name:
       >
         <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
           {genres.map((genre) => (
-            <li key={genre.id} className="py-1 px-2 hover:bg-gray-100 cursor-pointer rounded">
+            <li key={genre.id} className="py-1 px-2 hover:bg-gray-100 cursor-pointer rounded" onClick={() => onGenreSelect(genre.id)}>
               {genre.name}
             </li>
           ))}
