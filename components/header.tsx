@@ -29,11 +29,11 @@ export default async function Header() {
         <SearchBar />
        <nav className="flex gap-2 items-center">
          <GenresDropdown genres={genres.genres || []} />
+         {/* <Button variant="link">Temp</Button>
          <Button variant="link">Temp</Button>
-         <Button variant="link">Temp</Button>
-         <Button variant="link">Temp</Button>
+         <Button variant="link">Temp</Button> */}
        </nav>
-        <div className="flex items-center gap-4">
+        {/* <div className="flex items-center gap-4">
           <SignedOut>
             <SignInButton forceRedirectUrl="/movies">
               <Button variant={"secondary"}>
@@ -54,7 +54,7 @@ export default async function Header() {
               </Button>
             </SignOutButton>
           </SignedIn>
-        </div>
+        </div> */}
       </Toolbar>
     </AppBar>
   );

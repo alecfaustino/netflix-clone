@@ -23,9 +23,13 @@ https://api.themoviedb.org/3/search/movie?query=${searchParams.searchTerm}
   const data = await res.json();
   const movies = data.results;
 
+  if (movies.length === 0) {
+    return <Typography variant="h6" className='text-center align-middle'>No results found for: {searchParams.searchTerm}</Typography>;
+  }
+
   return (
     <div>
-      <h1>Search Results</h1>
+      <h1>Search Results for: {searchParams.searchTerm}</h1>
       <Grid container spacing={2}>
         {movies.map((movie: any) => (
           <Grid
