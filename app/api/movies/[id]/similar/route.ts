@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request, {params}: {params: {id: string}}) {
-  const id = params.id;
+export async function GET(context: { params: Promise<{id: string}> }) {
+  const { id } = await context.params;
 
   const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/similar`, {
     headers: {
