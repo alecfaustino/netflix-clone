@@ -25,12 +25,12 @@ https://api.themoviedb.org/3/search/movie?query=${searchTerm}
   const movies = data.results;
 
   if (movies.length === 0) {
-    return <Typography variant="h6" className='text-center align-middle'>No results found for: {searchParams.searchTerm}</Typography>;
+    return <Typography variant="h4" className='text-center align-middle'>No results found for: {searchParams.searchTerm}</Typography>;
   }
 
   return (
-    <div>
-      <h1>Search Results for: {searchTerm}</h1>
+    <main>
+      <Typography variant="h4" className='text-center'>Search Results for: {searchTerm}</Typography>
       <Grid container spacing={2}>
         {movies.map((movie: any) => (
           <Grid
@@ -55,6 +55,6 @@ https://api.themoviedb.org/3/search/movie?query=${searchTerm}
         </Grid>
       ))}
     </Grid>
-    </div>
+    </main>
   );
 }

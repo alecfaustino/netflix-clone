@@ -7,12 +7,14 @@ import { useRouter } from "next/navigation";
 export default function GenresDropdown({ genres }: { genres: { id: number; name: string }[] }) {
   const [open, setOpen] = useState(false);
   const [genreId, setGenreId] = useState<number | null>(null);
+  const [genreName, setGenreName] = useState<string | null>(null);
   const router = useRouter();
 
-  const onGenreSelect = (id: number) => {
+  const onGenreSelect = (id: number, name: string) => {
     setGenreId(id);
+    setGenreName(name);
     // navigate to movies/genre page
-    router.push(`/movies/genre?genre_id=${id}`);
+    router.push(`/movies/genre?genre_id=${id}&genre_name=${name}`);
   };
 
   return (
@@ -33,7 +35,7 @@ export default function GenresDropdown({ genres }: { genres: { id: number; name:
       >
         <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
           {genres.map((genre) => (
-            <li key={genre.id} className="py-1 px-2 hover:bg-gray-100 cursor-pointer rounded" onClick={() => onGenreSelect(genre.id)}>
+            <li key={genre.id} className="py-1 px-2 hover:bg-gray-100 cursor-pointer rounded" onClick={() => onGenreSelect(genre.id, genre.name)}>
               {genre.name}
             </li>
           ))}

@@ -13,7 +13,7 @@ export default async function Movies() {
 
   return (
     <main>
-      <Typography variant="h1" className='text-center'>Discover Movies</Typography>
+      <Typography variant="h4" className='text-center'>Discover Movies</Typography>
       <Grid container spacing={2}>
         {movies.results.map((movie: any) => (
           <Grid
