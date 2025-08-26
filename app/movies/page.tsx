@@ -6,8 +6,18 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
 export default async function Movies() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/movies`);
-  const movies = await res.json();
+  const res = await fetch(
+    `
+https://api.themoviedb.org/3/discover/movie`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+      },
+    }
+  );
+
+  const data = await res.json();
+  const movies = data.results;
 
   return (
     <main>
@@ -15,7 +25,7 @@ export default async function Movies() {
         Discover Movies
       </Typography>
       <Grid container spacing={2}>
-        {movies.results.map(
+        {movies.map(
           (movie: { id: number; title: string; poster_path: string }) => (
             <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={movie.id}>
               <Link href={`/movies/${movie.id}`}>
