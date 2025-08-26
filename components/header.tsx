@@ -1,14 +1,6 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-// import {
-//   SignInButton,
-//   SignUpButton,
-//   SignedIn,
-//   SignedOut,
-//   UserButton,
-//   SignOutButton
-// } from '@clerk/nextjs'
 
 import { Button } from "@/components/ui/button";
 import GenresDropdown from "./GenresDropdown";
@@ -37,31 +29,7 @@ export default async function Header() {
             </Link>
           </Button>
           <GenresDropdown genres={genres.genres || []} />
-          {/* <Button variant="link">Temp</Button>
-         <Button variant="link">Temp</Button> */}
         </nav>
-        {/* <div className="flex items-center gap-4">
-          <SignedOut>
-            <SignInButton forceRedirectUrl="/movies">
-              <Button variant={"secondary"}>
-                Sign In
-              </Button>
-            </SignInButton>
-            <SignUpButton forceRedirectUrl="/movies">
-              <Button variant={"secondary"}>
-                Sign Up
-              </Button>
-            </SignUpButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-            <SignOutButton redirectUrl="/">
-              <Button variant={"secondary"}>
-                Sign Out
-              </Button>
-            </SignOutButton>
-          </SignedIn>
-        </div> */}
       </Toolbar>
     </AppBar>
   );
