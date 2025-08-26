@@ -6,12 +6,13 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
 export default async function MovieSearchedPage({ searchParams }: { searchParams: { searchTerm: string | undefined } }) {
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/search?`);
-  // const data = await res.json();
+  const params = await searchParams;
+
+  const searchTerm = params.searchTerm;
 
   const res = await fetch(
     `
-https://api.themoviedb.org/3/search/movie?query=${searchParams.searchTerm}
+https://api.themoviedb.org/3/search/movie?query=${searchTerm}
 `,
     {
       headers: {
@@ -29,7 +30,7 @@ https://api.themoviedb.org/3/search/movie?query=${searchParams.searchTerm}
 
   return (
     <div>
-      <h1>Search Results for: {searchParams.searchTerm}</h1>
+      <h1>Search Results for: {searchTerm}</h1>
       <Grid container spacing={2}>
         {movies.map((movie: any) => (
           <Grid
