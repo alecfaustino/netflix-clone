@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button"
 import GenresDropdown from "./GenresDropdown";
 import SearchBar from "./ui/searchbar";
+import Link from "next/link";
 
 
 
@@ -28,9 +29,11 @@ export default async function Header() {
         </Typography>
         <SearchBar />
        <nav className="flex gap-2 items-center">
+         <Button variant="link" asChild>
+           <Link href="/movies" className="text-white hover:underline">Discover</Link>
+         </Button>
          <GenresDropdown genres={genres.genres || []} />
          {/* <Button variant="link">Temp</Button>
-         <Button variant="link">Temp</Button>
          <Button variant="link">Temp</Button> */}
        </nav>
         {/* <div className="flex items-center gap-4">

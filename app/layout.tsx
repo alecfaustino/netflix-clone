@@ -36,17 +36,17 @@ export default function RootLayout({
 }>) {
   return (
     // <ClerkProvider>
+    <ThemeRegistry>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <ThemeRegistry>
             <Header />
             {children}
             <footer className="fixed bottom-0 left-0 w-full bg-gray-100 text-center py-4 text-sm text-gray-600">
               This product uses the TMDB API but is not endorsed or certified by TMDB.
             </footer>
-          </ThemeRegistry>
         </body>
       </html>
+    </ThemeRegistry>
     // </ClerkProvider>
   );
 }
