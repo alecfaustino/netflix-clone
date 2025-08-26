@@ -10,15 +10,17 @@ import Typography from "@mui/material/Typography";
 //   SignOutButton
 // } from '@clerk/nextjs'
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import GenresDropdown from "./GenresDropdown";
 import SearchBar from "./ui/searchbar";
 import Link from "next/link";
 
-
-
 export default async function Header() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/genres`);
+  const res = await fetch(`https://api.themoviedb.org/3/genre/movie/list`, {
+    headers: {
+      Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+    },
+  });
   const genres = await res.json();
 
   return (
@@ -28,14 +30,16 @@ export default async function Header() {
           FavFlix
         </Typography>
         <SearchBar />
-       <nav className="flex gap-2 items-center">
-         <Button variant="link" asChild>
-           <Link href="/movies" className="text-white hover:underline">Discover</Link>
-         </Button>
-         <GenresDropdown genres={genres.genres || []} />
-         {/* <Button variant="link">Temp</Button>
+        <nav className="flex gap-2 items-center">
+          <Button variant="link" asChild>
+            <Link href="/movies" className="text-white hover:underline">
+              Discover
+            </Link>
+          </Button>
+          <GenresDropdown genres={genres.genres || []} />
+          {/* <Button variant="link">Temp</Button>
          <Button variant="link">Temp</Button> */}
-       </nav>
+        </nav>
         {/* <div className="flex items-center gap-4">
           <SignedOut>
             <SignInButton forceRedirectUrl="/movies">
