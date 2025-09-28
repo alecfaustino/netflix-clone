@@ -9,6 +9,7 @@ import Link from "next/link";
 
 export default async function Header() {
   const res = await fetch(`https://api.themoviedb.org/3/genre/movie/list`, {
+    next: { revalidate: 86400 },
     headers: {
       Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
     },

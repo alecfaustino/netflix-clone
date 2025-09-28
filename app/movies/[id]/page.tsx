@@ -15,6 +15,7 @@ export default async function MoviePage({
   params: { id: string };
 }) {
   const res = await fetch(`https://api.themoviedb.org/3/movie/${params.id}`, {
+    next: { revalidate: 86400 },
     headers: {
       Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
     },
@@ -32,6 +33,7 @@ export default async function MoviePage({
   const result = await fetch(
     `https://api.themoviedb.org/3/movie/${params.id}/similar`,
     {
+      next: { revalidate: 86400 },
       headers: {
         Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
       },

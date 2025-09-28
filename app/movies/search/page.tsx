@@ -4,6 +4,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
+import next from "next";
 
 export default async function MovieSearchedPage({
   searchParams,
@@ -19,6 +20,7 @@ export default async function MovieSearchedPage({
 https://api.themoviedb.org/3/search/movie?query=${searchTerm}
 `,
     {
+      next: { revalidate: 86400 },
       headers: {
         Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
       },

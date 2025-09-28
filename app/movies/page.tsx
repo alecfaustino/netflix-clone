@@ -10,6 +10,7 @@ export default async function Movies() {
     `
 https://api.themoviedb.org/3/discover/movie`,
     {
+      next: { revalidate: 86400 },
       headers: {
         Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
       },

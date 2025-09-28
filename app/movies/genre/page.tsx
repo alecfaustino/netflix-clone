@@ -17,6 +17,7 @@ export default async function MoviesByGenrePage({
   const res = await fetch(
     `https://api.themoviedb.org/3/discover/movie?with_genres=${genre}`,
     {
+      next: { revalidate: 86400 },
       headers: {
         Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
       },
