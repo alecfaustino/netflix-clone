@@ -1,7 +1,3 @@
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-
 import { Button } from "@/components/ui/button";
 import GenresDropdown from "./GenresDropdown";
 import SearchBar from "./ui/searchbar";
@@ -17,21 +13,19 @@ export default async function Header() {
   const genres = await res.json();
 
   return (
-    <AppBar position="sticky" className="bg-[#141414] shadow-lg">
-      <Toolbar className="flex justify-between px-8 min-h-[64px]">
-        <Typography variant="h5" className="text-white font-bold tracking-wide">
-          FavFlix
-        </Typography>
-        <SearchBar />
-        <nav className="flex gap-2 items-center">
-          <Button variant="link" asChild>
-            <Link href="/movies" className="text-white hover:underline">
-              Discover
-            </Link>
-          </Button>
-          <GenresDropdown genres={genres.genres || []} />
-        </nav>
-      </Toolbar>
-    </AppBar>
+    <header className="mb-4 flex items-center justify-between p-4 bg-gray-600">
+      <h1 className="text-white font-bold text-lg md:text-4xl">FavFlix</h1>
+      <SearchBar />
+      <nav className="flex gap-2 items-center">
+        <Button variant="link" asChild>
+          <Link
+            href="/movies"
+            className="text-white font-bold text-2xl hover:underline">
+            Discover
+          </Link>
+        </Button>
+        <GenresDropdown genres={genres.genres || []} />
+      </nav>
+    </header>
   );
 }
