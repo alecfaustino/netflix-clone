@@ -22,13 +22,13 @@ https://api.themoviedb.org/3/discover/movie`,
 
   return (
     <main>
-      <Typography variant="h4" className="text-center">
+      <h4 className="text-center text-4xl font-semibold p-4">
         Discover Movies
-      </Typography>
-      <Grid container spacing={2}>
+      </h4>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4 mb-16 mt-0 pt-0">
         {movies.map(
           (movie: { id: number; title: string; poster_path: string }) => (
-            <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={movie.id}>
+            <div className="col-span-1" key={movie.id}>
               <Link href={`/movies/${movie.id}`}>
                 <Card className="hover:scale-105 transition-transform">
                   {movie.poster_path && (
@@ -39,14 +39,14 @@ https://api.themoviedb.org/3/discover/movie`,
                     />
                   )}
                   <CardContent className="text-center h-24">
-                    <Typography variant="subtitle1">{movie.title}</Typography>
+                    <h1 className="text-lg font-semibold">{movie.title}</h1>
                   </CardContent>
                 </Card>
               </Link>
-            </Grid>
+            </div>
           )
         )}
-      </Grid>
+      </div>
     </main>
   );
 }
