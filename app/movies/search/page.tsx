@@ -1,8 +1,3 @@
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import next from "next";
 
@@ -32,40 +27,40 @@ https://api.themoviedb.org/3/search/movie?query=${searchTerm}
 
   if (movies.length === 0) {
     return (
-      <Typography variant="h4" className="text-center align-middle">
-        No results found for: {searchParams.searchTerm}
-      </Typography>
+      // TODO FIX TYPOGRAPHY
+      <h4>No results found for: {searchParams.searchTerm}</h4>
     );
   }
 
   return (
-    <main>
-      <Typography variant="h4" className="text-center">
-        Search Results for: {searchTerm}
-      </Typography>
-      <Grid container spacing={2}>
-        {movies.map(
-          (movie: { id: number; title: string; poster_path: string }) => (
-            <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={movie.id}>
-              <Link href={`/movies/${movie.id}`}>
-                <Card className="hover:scale-105 transition-transform">
-                  {/* TODO HANDLE EMPTY IMAGES */}
-                  {movie.poster_path && (
-                    <CardMedia
-                      component="img"
-                      image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      alt={movie.title}
-                    />
-                  )}
-                  <CardContent className="text-center h-24">
-                    <Typography variant="subtitle1">{movie.title}</Typography>
-                  </CardContent>
-                </Card>
-              </Link>
-            </Grid>
-          )
-        )}
-      </Grid>
-    </main>
+    <></>
+    // <main>
+
+    //   {/* TODO MATERIAL UI IMPORT REMOVED - NEEDS FIX */}
+    //   <h4 className="text-center">Search Results for: {searchTerm}</h4>
+    //   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    //     {movies.map(
+    //       (movie: { id: number; title: string; poster_path: string }) => (
+    //         <div className="col-span-1" key={movie.id}>
+    //           <Link href={`/movies/${movie.id}`}>
+    //             <Card className="hover:scale-105 transition-transform">
+    //               {/* TODO HANDLE EMPTY IMAGES */}
+    //               {movie.poster_path && (
+    //                 <CardMedia
+    //                   component="img"
+    //                   image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+    //                   alt={movie.title}
+    //                 />
+    //               )}
+    //               <CardContent className="text-center h-24">
+    //                 <Typography variant="subtitle1">{movie.title}</Typography>
+    //               </CardContent>
+    //             </Card>
+    //           </Link>
+    //         </div>
+    //       )
+    //     )}
+    //   </div>
+    // </main>
   );
 }
