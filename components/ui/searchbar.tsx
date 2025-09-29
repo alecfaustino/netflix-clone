@@ -19,7 +19,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="">
+    <div>
       <form
         onSubmit={onSubmit}
         className="flex items-center rounded-full px-3 py-1 shadow transition max-w-xs sm:max-w-md border-2 border-gray-700">
