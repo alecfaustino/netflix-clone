@@ -39,6 +39,25 @@ export default async function MoviePage({
 
   return (
     <div className="p-4 md:p-8 lg:p-16">
+      <div className="mb-4">
+        <Link
+          href="/movies"
+          className="inline-flex items-center hover:underline font-medium">
+          <svg
+            className="w-4 h-4 mr-2"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          See all movies
+        </Link>
+      </div>
       <Card className="flex flex-col p-4 md:flex-row bg-[#181818] rounded-lg shadow-lg overflow-hidden">
         <CardContent className="flex-shrink-1 flex justify-center items-center p-4">
           <Image
@@ -111,23 +130,3 @@ export default async function MoviePage({
     </div>
   );
 }
-
-//   <div className="mb-4">
-//     <Link
-//       href="/movies"
-//       className="inline-flex items-center hover:underline font-medium">
-//       <svg
-//         className="w-4 h-4 mr-2"
-//         fill="none"
-//         stroke="currentColor"
-//         strokeWidth="2"
-//         viewBox="0 0 24 24">
-//         <path
-//           strokeLinecap="round"
-//           strokeLinejoin="round"
-//           d="M15 19l-7-7 7-7"
-//         />
-//       </svg>
-//       See all movies
-//     </Link>
-//   </div>
