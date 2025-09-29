@@ -13,14 +13,18 @@ export default async function Header() {
   const genres = await res.json();
 
   return (
-    <header className="mb-4 flex items-center justify-between p-4 bg-gray-600">
-      <h1 className="text-white font-bold text-lg md:text-4xl">FavFlix</h1>
-      <SearchBar />
-      <nav className="flex gap-2 items-center">
+    <header className="flex items-center justify-between p-4 bg-gray-600 gap-2">
+      <h1 className="sr-only md:not-sr-only md:block text-white font-bold md:text-4xl flex-shrink-0">
+        FavFlix
+      </h1>
+      <div>
+        <SearchBar />
+      </div>
+      <nav className="flex gap-1 md:gap-2 justify-end flex-shrink-0">
         <Button variant="link" asChild>
           <Link
             href="/movies"
-            className="text-white font-bold text-2xl hover:underline">
+            className="text-white font-bold text-sm md:text-2xl hover:underline px-1 md:px-3">
             Discover
           </Link>
         </Button>

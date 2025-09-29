@@ -13,11 +13,13 @@ export default function SearchBar() {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!searchTerm.trim()) return;
+    setSearchTerm("");
     router.push(`/movies/search?searchTerm=${searchTerm}`);
   };
 
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex flex-[2] justify-center">
       <form
         onSubmit={onSubmit}
         className="flex items-center rounded-full px-3 py-1 shadow transition max-w-xs sm:max-w-md border-2 border-gray-700">

@@ -1,10 +1,18 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function GenresDropdown({ genres }: { genres: { id: number; name: string }[] }) {
+export default function GenresDropdown({
+  genres,
+}: {
+  genres: { id: number; name: string }[];
+}) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
@@ -19,18 +27,20 @@ export default function GenresDropdown({ genres }: { genres: { id: number; name:
           onMouseEnter={() => setOpen(true)}
           onMouseLeave={() => setOpen(false)}
           variant="ghost"
-        >
+          className="text-white font-bold text-sm md:text-2xl hover:underline px-1 md:px-3">
           Genres
         </Button>
       </PopoverTrigger>
       <PopoverContent
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
-        className="w-auto max-w-screen-md"
-      >
+        className="w-auto max-w-screen-md">
         <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
           {genres.map((genre) => (
-            <li key={genre.id} className="py-1 px-2 hover:bg-gray-100 cursor-pointer rounded" onClick={() => onGenreSelect(genre.id, genre.name)}>
+            <li
+              key={genre.id}
+              className="py-1 px-2 hover:cursor-pointer"
+              onClick={() => onGenreSelect(genre.id, genre.name)}>
               {genre.name}
             </li>
           ))}
