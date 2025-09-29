@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import Rating from "@/components/idComponents/StarRating";
@@ -84,23 +84,26 @@ export default async function MoviePage({
         <div className="flex overflow-x-auto gap-4 pb-2 md:grid md:grid-cols-5 md:gap-6 md:overflow-x-visible">
           {similarMovies.results.map(
             (movie: { id: number; title: string; poster_path: string }) => (
-              <Link
-                href={`/movies/${movie?.id}`}
-                key={movie?.id}
-                className="min-w-[160px] max-w-[180px] flex-shrink-0">
-                <Card className="bg-[#232323] hover:scale-105 hover:shadow-xl transition-transform duration-200">
-                  <Image
-                    src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`}
-                    alt={movie?.title}
-                    width={300}
-                    height={450}
-                    className="rounded-t"
-                  />
-                  <CardContent className="p-2">
-                    <h2 className="text-lg font-semibold">{movie?.title}</h2>
-                  </CardContent>
-                </Card>
-              </Link>
+              <div className="col-span-1" key={movie.id}>
+                <Link href={`/movies/${movie.id}`}>
+                  <Card className="hover:scale-105 transition-transform ">
+                    {movie.poster_path && (
+                      <Image
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                        width={500}
+                        height={750}
+                        className="w-full h-auto rounded p-2"
+                      />
+                    )}
+                    <CardFooter className="text-center h-16 justify-center">
+                      <h1 className="text-lg font-semibold text-center">
+                        {movie.title}
+                      </h1>
+                    </CardFooter>
+                  </Card>
+                </Link>
+              </div>
             )
           )}
         </div>
