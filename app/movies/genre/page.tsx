@@ -22,8 +22,6 @@ export default async function MoviesByGenrePage({
   );
   const data = await res.json();
   const movies = data.results;
-
-  console.log(data);
   return (
     <div className="mb-16">
       <h4 className="text-center text-4xl font-semibold p-4">

@@ -19,7 +19,6 @@ export default async function MoviePage({
   const data = await res.json();
   const movie = data;
 
-  console.log(movie);
 
   if (!movie) {
     return <div>Movie not found</div>;
@@ -35,7 +34,6 @@ export default async function MoviePage({
     }
   );
   const similarMovies = await result.json();
-  console.log(similarMovies.results);
 
   return (
     <div className="p-4 md:p-8 lg:p-16">
