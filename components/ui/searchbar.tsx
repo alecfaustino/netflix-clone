@@ -27,7 +27,7 @@ export default function SearchBar() {
           onChange={searchMovie}
           value={searchTerm}
           placeholder="Search"
-          className="flex-1 bg-transparent border-0 text-white placeholder-gray-400 focus:outline-none focus:ring-0 focus-visible:ring-0 focus:border-gray-500"
+          className="flex-1 bg-inherit border-0 text-white focus:outline-none focus:ring-0 focus-visible:ring-0"
         />
       </form>
     </div>

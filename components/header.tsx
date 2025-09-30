@@ -14,7 +14,7 @@ export default async function Header() {
   const genres = await res.json();
 
   return (
-    <header className="flex items-center justify-between p-4 bg-gray-600 gap-2">
+    <header className="flex items-center justify-between p-4 bg-gray-800 gap-2">
       <h1 className="sr-only md:not-sr-only md:block text-white font-bold md:text-4xl flex-shrink-0">
         FavFlix
       </h1>
