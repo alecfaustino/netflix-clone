@@ -28,7 +28,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
         <Header />
         {children}
         <footer className="fixed bottom-0 left-0 w-full bg-gray-100 text-center py-4 text-sm text-gray-600">

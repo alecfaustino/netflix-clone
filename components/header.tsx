@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import GenresDropdown from "./GenresDropdown";
 import SearchBar from "./ui/searchbar";
 import Link from "next/link";
+import { ModeToggle } from "./darkmode/ModeToggle";
 
 export default async function Header() {
   const res = await fetch(`https://api.themoviedb.org/3/genre/movie/list`, {
@@ -29,6 +30,7 @@ export default async function Header() {
           </Link>
         </Button>
         <GenresDropdown genres={genres.genres || []} />
+        <ModeToggle />
       </nav>
     </header>
   );
